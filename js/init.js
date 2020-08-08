@@ -18,7 +18,7 @@ var hideSpinner = function(){
 var getJSONData = function(url){
     var result = {};
     showSpinner();
-    return fetch(url)
+    return fetch("https://japdevdep.github.io/ecommerce-api/product/all.json")
     .then(response => {
       if (response.ok) {
         return response.json();
