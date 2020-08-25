@@ -39,7 +39,7 @@ function showCategoriesList(array){
     }
 }
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
+    getJSONData1("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
         
         if (resultObj.status === "ok")
         {

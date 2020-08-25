@@ -28,8 +28,8 @@ function filtrar(){
     showCategoriesList(productosFiltrados);
     arrayProductos = productosFiltrados;
     };
-
 }
+
 function limpiar(){
     document.getElementById("rangeFilterCountMin").value = "";
     document.getElementById("rangeFilterCountMax").value = "";
@@ -37,6 +37,7 @@ function limpiar(){
     arrayProductos = arrayProductosConst;
     
 }
+
 function ordenarAlfa(){
  arrayProductos.sort((a,b)=>{
      if (a.name < b.name){
@@ -63,6 +64,8 @@ function cambiarImagen(){
         ivertidoOrdenCant();
     };
 };
+
+
 function ordenarZeta(){
     arrayProductos.sort((a,b)=>{
         if (a.name < b.name){
@@ -76,6 +79,7 @@ function ordenarZeta(){
     corroborarActivos();
    };
 
+
 function ivertidoOrdenCant(){
     arrayProductos.sort((a,b)=>{
         return b.soldCount - a.soldCount
@@ -83,6 +87,7 @@ function ivertidoOrdenCant(){
     showCategoriesList(arrayProductos);
     corroborarActivos();
 };
+
 
 function ordenCant(){
     arrayProductos.sort((a,b)=>{
@@ -92,6 +97,7 @@ function ordenCant(){
     cambiarImagen();
     corroborarActivos();
 };
+
 
 function corroborarActivos(){
     var claseBotonA = document.getElementById("botonA");
@@ -109,7 +115,7 @@ function corroborarActivos(){
     } else{console.log("no hay cuestion")};
 };
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
+    getJSONData1("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
     arrayProductos = resultObj.data;
     arrayProductosConst = resultObj.data;
     ordenarAlfa()

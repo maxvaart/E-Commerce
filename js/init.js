@@ -18,7 +18,7 @@ var hideSpinner = function(){
 var getJSONData = function(url){
     var result = {};
     showSpinner();
-    return fetch("https://japdevdep.github.io/ecommerce-api/product/all.json")
+    return fetch("https://japdevdep.github.io/ecommerce-api/category/all.json")
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -38,6 +38,30 @@ var getJSONData = function(url){
         hideSpinner();
         return result;
     });
+}
+var getJSONData1 = function(url){
+  var result = {};
+  showSpinner();
+  return fetch("https://japdevdep.github.io/ecommerce-api/product/all.json")
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }else{
+      throw Error(response.statusText);
+    }
+  })
+  .then(function(response) {
+        result.status = 'ok';
+        result.data = response;
+        hideSpinner();
+        return result;
+  })
+  .catch(function(error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
+  });
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
