@@ -1,4 +1,5 @@
-.jumbotron, .card-body, .container, .site-header{
+
+.jumbotron, .card-body, .container, .site-header, #username{
     font-family: 'Raleway', serif !important;
 }
 
@@ -129,6 +130,10 @@ footer p {
   z-index: 1021;
   display: none;
 }
+.active{
+  background:  #c80e60;
+  color: white;
+}
 
 a.custom-card,
 a.custom-card:hover {
@@ -138,4 +143,9 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+#activo{
+  float: left;
+  padding-left: 18px;
+  color: white;
 }

@@ -31,14 +31,16 @@
   </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="cover.html">Inicio</a>
-            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        </div>
-    </nav>
+      <div class="py-2 d-none d-md-inline-block site-header"  id="activo" style="color:#c80e60"><i class="fas fa-user-alt"><strong><span id="username" > nombre</span></strong></i></div>
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2 d-none d-md-inline-block" href="cover.html"><i class="fas fa-home"></i> Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" href="categories.html"><i class="fas fa-th-list"></i> Categorías</a>
+        <a class="py-2 d-none d-md-inline-block" href="products.html"><i class="fas fa-cubes"></i> Productos</a>
+        <a class="py-2 d-none d-md-inline-block" href="sell.html"><i class="fas fa-hand-holding-usd"></i> Vender</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
+        <a class="py-2 d-none d-md-inline-block" href="#" onclick=logout() style="color:#c80e60"><i class="fas fa-door-open" style="color:#c80e60"></i> Salir</a>
+      </div>
+      </nav>
       <div class="container">
         <div class="text-center p-4">
           <h2>Vender</h2>
@@ -212,10 +214,19 @@
         </div>
       </div>
       <div id="spinner-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+      <script type="text/javascript">
+        function actualizarNombre(){
+          var actualizo = localStorage.getItem("usuario");
+          document.getElementById("username").innerHTML = " "+ actualizo;
+        }
+        actualizarNombre();
+      </script>
       <script src="js/jquery-3.4.1.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
       <script src="js/dropzone.js"></script>
       <script src="js/init.js"></script>
       <script src="js/sell.js"></script>
+      <script src="js/login.js"></script>
+    <script src="https://kit.fontawesome.com/62d1a3e9cc.js" crossorigin="anonymous"></script>
     </body>
 </html>
