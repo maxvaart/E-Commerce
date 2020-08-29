@@ -35,35 +35,40 @@
         <div class="row">
           <div class="col text-right">
               <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-                      <input class="btn" type="button" value="A-Z" name="options"  onclick=ordenarAlfa() style="border: #c80e60 solid 0.5px;" id="botonA" >
-                      <input class="btn" type="button" value="Z-A" name="options"  onclick=ordenarZeta() style="border: #c80e60 solid 0.5px;"id="botonZ">
-                      <button class="btn"style="border: #c80e60 solid 0.5px;" onclick=ordenCant() id="botonC"><i id="icono" class="fas fa-sort-amount-down mr-1"></i>Cant.</button>
+                <button class="btn" type="button" name="options"  onclick=ordenarZeta() style="border: #c80e60 solid 0.5px;" id="botonA" ><i class="fas fa-dollar-sign"></i><i class="fas fa-long-arrow-alt-up"></i></button>
+                <button class="btn" type="button" name="options"  onclick=ordenarAlfa() style="border: #c80e60 solid 0.5px;" id="botonZ" ><i class="fas fa-dollar-sign"></i><i class="fas fa-long-arrow-alt-down"></i></button>
+                <button class="btn"style="border: #c80e60 solid 0.5px;" onclick=ordenCant() id="botonC"><i id="icono" class="fas mr-1 fa-sort-amount-up "></i>Cant.</button>
               </div>
           </div>
-      </div>
-      <div class="row justify-content-end">
-        <div class="col-md-6"></div>
-          <div class="col-md-6 col-sm-12 mb-1 container">
-            <div class="row container p-0 m-0">
-              <div class="col">
-                <p class="font-weight-normal text-right my-2">Cant.</p>
-              </div>
-              <div class="col">
-                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="border: #c80e60 solid 0.5px;">
-              </div>
-              <div class="col">
-                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="border: #c80e60 solid 0.5px;">
-              </div>
-              <div class="col-3 p-0">
-                <div class="btn-group" role="group">
-                  <button class="btn" style="border: #c80e60 solid 0.5px;" id="rangeFilterCount" onclick=filtrar()>Filtrar</button>
-                  <button class="btn" style="border: #c80e60 solid 0.5px; color: #c80e60;" id="clearRangeFilter"onclick=limpiar()>Limpiar</button>
-                </div>
+        </div>
+        <div class="row justify-content-start">
+        <div class="col py-2 d-none d-md-inline-block">  
+          <i class="fas fa-search" style="float: right;"></i>
+        </div>
+        <div class="col-md-5">  
+          <input class="form-control" type="text" placeholder="Buscar" id="buscador" style="border: #c80e60 solid 0.5px;">
+        </div>
+        <div class="col-md-6 col-sm-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-right my-2">Precio</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="border: #c80e60 solid 0.5px;">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="border: #c80e60 solid 0.5px;">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn" style="border: #c80e60 solid 0.5px;" id="rangeFilterCount" onclick=filtrar()>Filtrar</button>
+                <button class="btn" style="border: #c80e60 solid 0.5px; color: #c80e60;" id="clearRangeFilter" onclick=limpiar()>Limpiar</button>
               </div>
             </div>
           </div>
+        </div>
       </div>
-          <div class="row">
+          <div class="row" style="margin-top: 10px;">
               <div class="list-group" id="cat-list-container">
               </div>
           </div>

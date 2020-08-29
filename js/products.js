@@ -3,7 +3,7 @@
 //elementos HTML presentes.
 var arrayProductosConst = [];
 var arrayProductos = [];
-
+var arrayFiltrado = [];
 
 function filtrar(){
     var productosFiltrados = [];
@@ -28,7 +28,7 @@ function filtrar(){
     showCategoriesList(productosFiltrados);
     arrayProductos = productosFiltrados;
     };
-}
+};
 
 function limpiar(){
     document.getElementById("rangeFilterCountMin").value = "";
@@ -36,13 +36,13 @@ function limpiar(){
     showCategoriesList(arrayProductosConst);
     arrayProductos = arrayProductosConst;
     
-}
+};
 
 function ordenarAlfa(){
  arrayProductos.sort((a,b)=>{
-     if (a.name < b.name){
+     if (a.cost < b.cost){
          return -1;
-     } else if (a.name > b.name){
+     } else if (a.cost > b.cost){
          return 1;
      } else { return 0; }
  });
@@ -52,15 +52,15 @@ function ordenarAlfa(){
 
 function cambiarImagen(){
     var activa= document.getElementById("icono");
-    if ((activa.className) === "fas fa-sort-amount-down mr-1")
+    if ((activa.className) == "fas mr-1 fa-sort-amount-up")
     {
-        activa.classList.remove("fa-sort-amount-dow");
-        activa.classList.add("fa-sort-amount-up");
+        activa.classList.remove("fa-sort-amount-up");
+        activa.classList.add("fa-sort-amount-down");
         
         
     } else{
-        activa.classList.remove("fa-sort-amount-up");
-        activa.classList.add("fa-sort-amount-down");
+        activa.classList.remove("fa-sort-amount-down");
+        activa.classList.add("fa-sort-amount-up");
         ivertidoOrdenCant();
     };
 };
@@ -68,9 +68,9 @@ function cambiarImagen(){
 
 function ordenarZeta(){
     arrayProductos.sort((a,b)=>{
-        if (a.name < b.name){
+        if (a.cost < b.cost){
             return 1;
-        } else if (a.name > b.name){
+        } else if (a.cost > b.cost){
             return -1;
         } else { return 0; }
         
@@ -114,6 +114,29 @@ function corroborarActivos(){
         claseBotonZ.classList.remove("active");
     } else{console.log("no hay cuestion")};
 };
+
+function buscar(){
+    var textoEscrito = document.getElementById("buscador").value.toLowerCase();
+    for (i=0; i<arrayProductos.length;i++){
+        if(arrayProductos[i].name.toLowerCase().includes(textoEscrito)){
+            arrayFiltrado.push(arrayProductos[i]);
+        }
+    }
+    if (arrayFiltrado.length == 0){
+        document.getElementById("cat-list-container").innerHTML = `
+            <div class="row">
+                <div class="col-12 text-muted">
+                <br>
+                        <h4 class="mb-1">No existen productos disponibles con esas características.</h4>
+                </div>
+            </div>
+        `
+    } else {
+        showCategoriesList(arrayFiltrado);
+        arrayFiltrado = [];
+    }
+};
+
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData1("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
     arrayProductos = resultObj.data;
@@ -121,3 +144,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     ordenarAlfa()
 })   
 });
+
+
+document.getElementById("buscador").addEventListener("keyup",buscar);
