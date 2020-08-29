@@ -145,7 +145,40 @@ a.custom-card:hover {
   color: orange;
 }
 #activo{
-  float: left;
-  padding-left: 18px;
+
+  width: max-content;
   color: white;
+  background-color:#c80e60;
+  border-radius: 8px 8px 0px 0px;
+  width: 150px;
+  text-align: center;
+}
+i{
+  margin: 5px;
+}
+#salir{
+  text-align: center;
+  background-color:#c80e60 ;
+  display:none;
+  width: 150px;
+  border-radius: 8px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 15px;
+  padding-top: 12px;
+
+}
+#activo:hover #salir{
+  display: flex;
+  position: absolute;
+  animation: menu 1s;
+}
+@keyframes menu{
+0%{
+  padding-top: 0px;
+} 40%{
+  padding-top: 20px;
+} 100%{
+  padding-top: 12px;
+}
 }
