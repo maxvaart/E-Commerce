@@ -15,7 +15,7 @@ var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-var getJSONData = function(url){
+var getJSONDataCategory = function(url){
     var result = {};
     showSpinner();
     return fetch("https://japdevdep.github.io/ecommerce-api/category/all.json")
@@ -39,10 +39,82 @@ var getJSONData = function(url){
         return result;
     });
 }
-var getJSONData1 = function(url){
+var getJSONDataCategoryInfo = function(url){
+  var result = {};
+  showSpinner();
+  return fetch("https://japdevdep.github.io/ecommerce-api/category/1234.json")
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }else{
+      throw Error(response.statusText);
+    }
+  })
+  .then(function(response) {
+        result.status = 'ok';
+        result.data = response;
+        hideSpinner();
+        return result;
+  })
+  .catch(function(error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
+  });
+}
+var getJSONDataProduct = function(url){
   var result = {};
   showSpinner();
   return fetch("https://japdevdep.github.io/ecommerce-api/product/all.json")
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }else{
+      throw Error(response.statusText);
+    }
+  })
+  .then(function(response) {
+        result.status = 'ok';
+        result.data = response;
+        hideSpinner();
+        return result;
+  })
+  .catch(function(error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
+  });
+}
+var getJSONDataProductInfo = function(url){
+  var result = {};
+  showSpinner();
+  return fetch("https://japdevdep.github.io/ecommerce-api/product/5678.json")
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }else{
+      throw Error(response.statusText);
+    }
+  })
+  .then(function(response) {
+        result.status = 'ok';
+        result.data = response;
+        hideSpinner();
+        return result;
+  })
+  .catch(function(error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
+  });
+}
+var getJSONDataProductComments = function(url){
+  var result = {};
+  showSpinner();
+  return fetch("https://japdevdep.github.io/ecommerce-api/product/5678-comments.json")
   .then(response => {
     if (response.ok) {
       return response.json();

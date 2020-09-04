@@ -182,3 +182,14 @@ i{
   padding-top: 12px;
 }
 }
+#comentario{
+  border-radius: 50px;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  background-color:#c80e60;
+  -webkit-box-shadow: 25px 24px 16px -14px rgba(0,0,0,0.46);
+  -moz-box-shadow: 25px 24px 16px -14px rgba(0,0,0,0.46);
+  box-shadow: 25px 24px 16px -14px rgba(0,0,0,0.46);
+  margin: 25px;
+};
