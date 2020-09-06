@@ -43,6 +43,42 @@ function showCommentsList(array){
     }
 }
 
+//ENVIA EL COMENTARIO Y LO PRESENTA EN PANTALLA\
+    
+function enviarComentario(){
+    var nombre = document.getElementById("idNewComment").value;
+    var arrayEstrellas = document.getElementsByClassName("scoreStar");
+    var calificacion = calculoPuntaje(arrayEstrellas);
+    var comentario = document.getElementById("newComment").value;
+    var hoy = new Date();
+    var fecha= hoy.getFullYear()+"-"+(hoy.getMonth()+1)+"-"+hoy.getDate();
+    var hora=hoy.getHours()+":"+hoy.getMinutes()+":"+hoy.getSeconds();
+    var fechaYhora=fecha+" "+hora;
+    var comentarioCompleto = {
+        "score": calificacion,
+        "description": comentario,
+        "user": nombre,
+        "dateTime": fechaYhora
+    }
+    if(nombre.trim()!="" && comentario.trim()!=""){
+    comments.push(comentarioCompleto);
+    showCommentsList(comments);}
+    else{
+        alert("Faltan completar campos.")
+    }
+
+}
+
+//PASA ESTRELLAS A PUNTAJE
+function calculoPuntaje(arreglo){
+    var valor;
+    for(i=0;i<arreglo.length; i++){
+        if (arreglo[i].checked){
+            valor = parseInt(arreglo[i].value); 
+        }
+    }
+    return valor;
+}
 function countStars(i){
     var cStars = new String;
     var calification = parseInt(i);

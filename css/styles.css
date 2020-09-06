@@ -193,3 +193,24 @@ i{
   box-shadow: 25px 24px 16px -14px rgba(0,0,0,0.46);
   margin: 25px;
 };
+#scorePoint:hover{
+  color: orange;
+  background-color: orange;
+}
+input[type = "radio"]{
+  display: none;
+} 
+.puntuacion{
+  direction: rtl;
+      unicode-bidi: bidi-override;
+}
+label{
+  color: white;
+}
+label:hover ,
+label:hover ~ label {
+  color: #c80e60;
+}
+input[type = "radio"]:checked ~ label {
+  color: #c80e60;
+}

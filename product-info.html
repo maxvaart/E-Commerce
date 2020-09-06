@@ -68,8 +68,21 @@
       <h3 style="text-align: center ;">Comentarios de nuestros clientes: </h3>
         <div id="comments">
         </div>
-        
-      <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver al listado</a>
+        <div  class="bg-dark" style="padding: 20px; text-align: center; border-radius: 20px; color: white;">
+            <h1>Dejanos tu comentario sobre este producto: </h1>
+            <label>Nombre: </label><input type="text" id="idNewComment" style="border-radius:10px; padding: 2px; margin: 10px 20px 20px 10px;">
+            <label>Clasificación: </label>
+            <span style="margin: 10px 20px 20px 10px;" class= "puntuacion">
+              <input type="radio" id="radiouno"class= "scoreStar" name="estrella" value="5"><label class= "fa fa-star" for="radiouno"></label>
+              <input type="radio" id="radiodos" class= "scoreStar" name="estrella" value="4"><label class= "fa fa-star" for="radiodos"></label>
+              <input type="radio" id="radiotres" class= "scoreStar" name="estrella" value="3"><label class= "fa fa-star" for="radiotres"></label>
+              <input type="radio" id="radiocuatro" class= "scoreStar" name="estrella" value="2"><label class= "fa fa-star" for="radiocuatro"></label>
+              <input type="radio" id="radiocinco" class= "scoreStar" name="estrella" value="1"><label class= "fa fa-star" for="radiocinco"></label>
+            </span>
+          <textarea id="newComment" rows="3" cols="100" style="border-radius:50px; padding: 25px;"></textarea><Br>
+          <button class="btn btn-light" style="margin-top: 30px;" onclick=enviarComentario()>ENVIAR COMENTARIO</button>
+        </div>
+        <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Volver al listado</a>
     </div>
     
   </main>
@@ -92,6 +105,7 @@
       <div></div>
     </div>
   </div>
+  
   
   <script type="text/javascript">
     function actualizarNombre(){

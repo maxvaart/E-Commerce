@@ -147,7 +147,7 @@ function showCategoriesList(array){
         let category = array[i];
 
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <a class="list-group-item list-group-item-action" href="product-info.html" >
             <div class="row">
                 <div class="col-3">
                     <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
@@ -170,7 +170,7 @@ function showCategoriesList(array){
                     </div>
                     </div>
             </div>
-        </div>
+        </a>
         `
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
