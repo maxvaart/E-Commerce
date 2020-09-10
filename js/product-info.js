@@ -1,5 +1,37 @@
 var category = {};
 var comments ={};
+var productRelacionated=[];
+var auxArrayProductos=[];
+
+//MOSTRAR PRODUCTOS RELACIONADOS
+function showRelacionated(array){
+    asignarRelacionados();
+    let htmlContentToAppend = "";
+
+    for(let i = 0; i < array.length; i++){
+        let productElement = array[i];
+
+        htmlContentToAppend += `
+        <div class="card col-3" style="width: 18rem; min-height: 100%; margin:15px">
+        <img class="card-img-top" src=`+productElement.imgSrc+` alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">`+productElement.name+`</h5>
+          <p class="card-text">`+productElement.description+`</p>
+          <a href="products.html" class="btn btn-primary bg-dark" >Ir a productos</a>
+        </div>
+      </div>
+        `
+
+        document.getElementById("articleRenacionated").innerHTML = htmlContentToAppend;
+    } 
+}
+//TOMAR LOS DATOS DE RELACIONADOS
+function asignarRelacionados(){
+    for(i=0;i<category.relatedProducts.length;i++){
+        var idRelacion = parseInt(category.relatedProducts[i]);
+        productRelacionated.push(auxArrayProductos[idRelacion]);
+    }
+}
 //MUESTRA IMAGENES DE LA GALERIA
 function showImagesGallery(array){
 
@@ -111,10 +143,13 @@ document.addEventListener("DOMContentLoaded", function(e){
             showImagesGallery(category.images);
         }
     });
-    
+    getJSONDataProduct("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
+        auxArrayProductos = resultObj.data;
+})
     getJSONDataProductComments(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
 
                 comments = resultObj.data;
                 showCommentsList(comments);
+                showRelacionated(productRelacionated);
         });
 });
