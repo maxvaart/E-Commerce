@@ -71,10 +71,20 @@ function showCommentsList(array){
         `
 
         document.getElementById("comments").innerHTML = htmlContentToAppend;
+        document.getElementById("idNewComment").value ="";
+        document.getElementById("newComment").value = "";
+        estrellasBlancas(document.getElementsByClassName("scoreStar"));
+        
         
     }
 }
 
+//VOLVER AL ESTILO BLANCO
+function estrellasBlancas(array){
+    for (i=0;i<array.length;i++){
+        document.getElementsByClassName("scoreStar")[i].checked = false;
+    }
+}
 //ENVIA EL COMENTARIO Y LO PRESENTA EN PANTALLA\
     
 function enviarComentario(){
@@ -94,7 +104,8 @@ function enviarComentario(){
     }
     if(nombre.trim()!="" && comentario.trim()!=""){
     comments.push(comentarioCompleto);
-    showCommentsList(comments);}
+    showCommentsList(comments);
+}
     else{
         alert("Faltan completar campos.")
     }
@@ -123,6 +134,9 @@ function countStars(i){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    getJSONDataProduct("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
+        auxArrayProductos = resultObj.data;
+})
     getJSONDataProductInfo(PRODUCT_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {
@@ -143,9 +157,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             showImagesGallery(category.images);
         }
     });
-    getJSONDataProduct("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
-        auxArrayProductos = resultObj.data;
-})
+    
     getJSONDataProductComments(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
 
                 comments = resultObj.data;
