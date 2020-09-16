@@ -20,10 +20,18 @@
         <a class="py-2 d-none d-md-inline-block" href="categories.html"><i class="fas fa-th-list"></i> Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html"><i class="fas fa-cubes"></i> Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html"><i class="fas fa-hand-holding-usd"></i> Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
         <div class="py-2 d-none d-md-inline-block site-header "  id="activo" style="color:white">
-          <i class="fas fa-user-alt"><strong><span id="username" > nombre</span></strong></i>
-          <a id="salir" href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></div>
+          <strong><span id="username" > nombre</span></strong></i>
+          <div id="salir">
+          <ul>
+          <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Mi perfil</a></li>
+          <hr>
+          <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Mi carrito</a>
+          <hr>
+          <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
+          </ul>
+        </div>
+        </div>
       </div>
       </nav>
     <main role="main">

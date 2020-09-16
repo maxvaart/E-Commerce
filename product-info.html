@@ -22,16 +22,24 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html"><i class="fas fa-th-list"></i> Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html"><i class="fas fa-cubes"></i> Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html"><i class="fas fa-hand-holding-usd"></i> Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i> Mi carrito</a>
       <div class="py-2 d-none d-md-inline-block site-header "  id="activo" style="color:white">
-        <i class="fas fa-user-alt"><strong><span id="username" > nombre</span></strong></i>
-        <a id="salir" href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></div>
+        <strong><span id="username" > nombre</span></strong></i>
+        <div id="salir">
+        <ul>
+        <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Mi perfil</a></li>
+        <hr>
+        <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Mi carrito</a>
+        <hr>
+        <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
+        </ul>
+      </div>
+      </div>
     </div>
     </nav>
   <main role="main">
     <div class="container mt-5">
       <div class="text-center p-4">
-        <h2>Descripción del producto</h2>
+        <h1>Descripción del producto</h1>
         <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
         <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea el producto
           seleccionado previamente, siempre se visualizará el presente: <strong>Chevrolet Onix Joy</strong>.</p>
@@ -65,11 +73,27 @@
         </dd>
        
       </dl>
-      <h3 style="text-align: center ;">Productos relacionados:</h3>
-      <div id="articleRenacionated" style="margin:35px 0 35px 0;" class="row">
-
-      </div>
-      <h3 style="text-align: center ;">Comentarios de nuestros clientes: </h3>
+      <h2 style="text-align: center ; margin: 25px 0 20px 0 ;">Productos relacionados:</h2>
+      <br>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          </ol>
+          <div class="carousel-inner" id="articleRelacionated">
+            
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <br>
+      <h2 style="text-align: center ; margin: 25px 0 35px 0 ;">Comentarios de nuestros clientes: </h2>
         <div id="comments">
         </div>
         <div  class="bg-dark" style="padding: 20px; text-align: center; border-radius: 20px; color: white;">

@@ -10,19 +10,32 @@ function showRelacionated(array){
 
     for(let i = 0; i < array.length; i++){
         let productElement = array[i];
-
-        htmlContentToAppend += `
-        <div class="card col-3" style="width: 18rem; min-height: 100%; margin:15px">
-        <img class="card-img-top" src=`+productElement.imgSrc+` alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">`+productElement.name+`</h5>
-          <p class="card-text">`+productElement.description+`</p>
-          <a href="products.html" class="btn btn-primary bg-dark" >Ir a productos</a>
-        </div>
-      </div>
+        if (i==0){
+            htmlContentToAppend += `
+            <div class="carousel-item active">
+            <img src=`+productElement.imgSrc+` class="d-block w-90 float-right">
+            <div class="carousel-caption d-none d-md-block text-left align-middle ">
+            <h2><strong>`+productElement.name+`</strong></h4>
+            <p style="margin-right:500px; margin-bottom:130px">`+productElement.description+`</p>
+            <button type="button" class="btn btn-light">Ver Producto</button>
+            </div>
+            </div>
         `
+        } else{
+            htmlContentToAppend += `
+            <div class="carousel-item">
+            <img src=`+productElement.imgSrc+` class="d-block w-90 float-right">
+            <div class="carousel-caption d-none d-md-block text-left">
+              <h2><strong>`+productElement.name+`</strong></h4>
+              <p style="margin-right:500px; margin-bottom:130px">`+productElement.description+`</p>
+              <button type="button" class="btn btn-light">Ver Producto</button>
+            </div>
+            </div>
+        `
+        }
+        
 
-        document.getElementById("articleRenacionated").innerHTML = htmlContentToAppend;
+        document.getElementById("articleRelacionated").innerHTML = htmlContentToAppend;
     } 
 }
 //TOMAR LOS DATOS DE RELACIONADOS
