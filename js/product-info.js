@@ -34,7 +34,6 @@ function showRelacionated(array){
         `
         }
         
-
         document.getElementById("articleRelacionated").innerHTML = htmlContentToAppend;
     } 
 }
