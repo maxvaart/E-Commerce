@@ -222,3 +222,32 @@ ul{
 hr{
  background-color: white;
 }
+
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+input[type=number] {
+
+    -moz-appearance:textfield;
+
+}
+.sinSeleccionar, #seccionDireccion {
+  background-color: #c80e60; 
+  border-radius: 5px; 
+  color: white; 
+  padding: 20px 100px;
+  margin: 5px;
+}
+.sinSeleccionar:hover{
+  background-color:#424347;
+}
+#seccionEnvios input[type = "radio"]:checked + label div{
+  background-color:#424347;
+}

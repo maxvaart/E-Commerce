@@ -15,6 +15,30 @@ var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+var getJSONCart = function(url){
+  var result = {};
+  showSpinner();
+  return fetch("https://japdevdep.github.io/ecommerce-api/cart/654.json")
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }else{
+      throw Error(response.statusText);
+    }
+  })
+  .then(function(response) {
+        result.status = 'ok';
+        result.data = response;
+        hideSpinner();
+        return result;
+  })
+  .catch(function(error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
+  });
+}
 var getJSONDataCategory = function(url){
     var result = {};
     showSpinner();

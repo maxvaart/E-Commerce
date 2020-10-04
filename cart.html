@@ -54,14 +54,77 @@
       </div>
     </div>
     </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
+  <div class="container">
+    <div class="text-center p-4">
+      <h2><i class="fas fa-shopping-cart"></i> Carrito de compras</h2>
+      <p class="lead">Ve aquí los articulos que vas a comprar</p>
       <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
-  </div>
+    <div class="row text-center" style="background-color: #c80e60; border-radius: 5px; color: white; padding-top: 12px;">
+      
+      <div class="col-5">
+        <strong><p>Articulo</p></strong>
+      </div>
+      <div class="col-2">
+        <strong><p>Cantidad</p></strong>
+      </div>
+      <div class="col-2">
+        <strong><p>Precio Unitario</p></strong>
+      </div>
+      <div class="col-2">
+        <strong><p>Subtotal</p></strong>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+      <div class="list-group text-center" id="cat-list-container">
+      </div>
+    </div>
+    <br>
+    <div class="text-center p-4" id="seccionEnvios">
+      <h2><i class="fas fa-shipping-fast"></i> Opciones de envio</h2>
+      <p class="lead">Selecciona cuando quieres recibir tus productos</p>
+      <hr>
+      
+
+      <input type="radio" id="envio1" name="envio" value="0,15">
+      <label for="envio1">
+        <div class="row text-center sinSeleccionar">
+          <h5>Premium - 2 a 5 dias (15%)</h5>
+        </div>
+      </label>
+      
+      <input type="radio" id="envio2" name="envio" value="0,7">
+      <label for="envio2">
+        <div class="row text-center sinSeleccionar">
+          <h5>Express 5 a 8 dias (7%)</h5>
+        </div>
+      </label>
+      
+      <input type="radio" id="envio3" name="envio">
+      <label for="envio3">
+        <div class="row text-center sinSeleccionar" value="0,5">
+          <h5>Standar 12 a 15 dias (5%)
+          </h5>
+        </div>
+      </label>
+      <br><br>
+      <p class="lead">Selecciona donde quieres recibir tus productos</p>
+      <hr>
+      <div class="text-center" id="seccionDireccion">
+        <label style="margin: 15px 5px 15px 15px;"for="direccion"><strong>Direccion:</strong></label>
+        <input type="text" id="direccion" required>
+        <label style="margin: 15px 5px 15px 15px;"for="esquina"><strong>Esquina:</strong></label>  
+        <input type="text" id="esquina" required><br>
+        <label style="margin: 15px 5px 15px 15px;" for="numero"><strong>Numero:</strong></label>
+        <input type="text" id="numero" required>
+      </div>
+    </div>
+    </div>
+   
+  
+  
+    
+    
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
