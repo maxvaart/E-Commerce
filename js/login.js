@@ -20,5 +20,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 function logout(){
     localStorage.clear();
     window.location="index.html";
+    almacenoCarrito();
 }
 

@@ -251,3 +251,6 @@ input[type=number] {
 #seccionEnvios input[type = "radio"]:checked + label div{
   background-color:#424347;
 }
+.cant{
+  width: 5ch;
+}

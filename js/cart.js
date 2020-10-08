@@ -3,9 +3,39 @@ var arrayComprados = [];
 var arrayCantidades =[];
 var arrayValoresUnitarios =[];
 var arraySubtotales=[];
+var arrayPorcentajes=[];
+var porcentajeSeleccionado;
+var precioTotal = document.getElementById("totalCostText");
+var totalProductos = document.getElementById("productCostText");
+var gastoPorcentaje = document.getElementById("comissionText");
 
 
-//BOTONES MODIFICADORES
+//FUNCION QUE VERIFICA EL PORCENTAJE SELECCIONADO
+function porcentaje(){
+    for(i=1;i<4;i++){
+        arrayPorcentajes.push(document.getElementById("envio"+i));
+    }
+}
+//DA EL PORCENTAJE SELECCIONADO
+function porcentajeSelec(){
+    for(i=0;i<arrayPorcentajes.length;i++){
+        if(arrayPorcentajes[i].checked)
+        {
+            porcentajeSeleccionado = arrayPorcentajes[i].value;
+        }
+    }
+    return parseFloat(porcentajeSeleccionado)
+}
+//DA EL TOTAL GASTADO
+function calculoProductos(){
+    var gastoProductos = 0;
+    for(i=0;i<arraySubtotales.length;i++){
+        gastoProductos += parseFloat(arraySubtotales[i].innerHTML);
+    }
+    return gastoProductos
+}
+
+//BOTONES MODIFICADORES DE CANTIDAD
 function modificadorPositivo(valor){
     var aux = valor-1;
     arrayCantidades[aux].value = parseInt(arrayCantidades[aux].value)+1;
@@ -35,6 +65,13 @@ function calcular(indiceArray){
 function actualizarPrecio (indiceArray){
     var aux = indiceArray - 1;
     arraySubtotales[aux].innerHTML = calcular(aux); 
+    actualizarTotales()
+}
+//CALCULA LOS VALORES FINALES - TOTALES
+function actualizarTotales(){
+    totalProductos.innerHTML = calculoProductos();
+    gastoPorcentaje.innerHTML = (calculoProductos() * porcentajeSelec()) / 100;
+    precioTotal.innerHTML = parseFloat(totalProductos.innerHTML) + parseFloat(gastoPorcentaje.innerHTML);
 }
 //ALMACENA Y ACTUALIZA EL ARRAY CON LOS VALORES NUEVOS
 function actualizarArray(array){
@@ -42,6 +79,13 @@ function actualizarArray(array){
         arrayCantidades.push(document.getElementById("cantidad"+i));
         arrayValoresUnitarios.push(parseFloat(cambiarMoneda(document.getElementById("moneda"+i).innerHTML, document.getElementById("unitario"+i).innerHTML)));
         arraySubtotales.push(document.getElementById("subtotal"+i)); 
+    }
+    porcentaje();
+}
+//ALMACENO EN LOCAL STORAGE LA CANTIDAD DE PRODUCTOS EN EL CARRITO
+function almacenoCarrito(){
+    if(arrayComprados.length!= null){
+        localStorage.setItem("productosEnCarro" , arrayComprados.length)
     }
 }
 //PRESENTO EN HTML LOS PRODUCTOS COMPRADOS
@@ -62,7 +106,7 @@ function showObjetcsList(array){
                 </div>
                 <div class="col-2">
                     <span><button class="btn" style="color: #c80e60;" onclick=modificadorPositivo(`+i+`)><strong style="font-size:30px" >+</strong></button> </span>
-                    <input id= "cantidad`+i+`"class="input-md" type="number" size="2" min="1" value="` +objeto.count+`" style="text-align:center" onchange=actualizarPrecio(`+i+`)> 
+                    <input id= "cantidad`+i+`"class="input-md cant" type="number" size="2" min="1" value="` +objeto.count+`" style="text-align:center" onchange=actualizarPrecio(`+i+`)> 
                     <span><button class="btn" style="color: #c80e60;"onclick=modificadorNegativo(`+i+`)><strong style="font-size:30px">-</strong></button></span>
                 </div>
                 <div class="col-2">
@@ -90,6 +134,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONCart("https://japdevdep.github.io/ecommerce-api/cart/654.json").then(function(resultObj){
     arrayComprados = resultObj.data.articles;
     showObjetcsList(arrayComprados);
-    })
-});
-
+    almacenoCarrito();
+    actualizarNombre();
+    })});

@@ -44,9 +44,9 @@
         <strong><span id="username" > nombre</span></strong></i>
         <div id="salir">
         <ul>
-        <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Mi perfil</a></li>
+        <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Perfil</a></li>
         <hr>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Mi carrito</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Carrito <span class="badge" style="background-color:#424347;"></span></a>
         <hr>
         <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
         </ul>
@@ -86,23 +86,23 @@
       <hr>
       
 
-      <input type="radio" id="envio1" name="envio" value="0,15">
+      <input type="radio" id="envio1" name="envio" value="15" onchange=actualizarTotales()>
       <label for="envio1">
         <div class="row text-center sinSeleccionar">
           <h5>Premium - 2 a 5 dias (15%)</h5>
         </div>
       </label>
       
-      <input type="radio" id="envio2" name="envio" value="0,7">
+      <input type="radio" id="envio2" name="envio" value="7" onchange=actualizarTotales()>
       <label for="envio2">
         <div class="row text-center sinSeleccionar">
           <h5>Express 5 a 8 dias (7%)</h5>
         </div>
       </label>
       
-      <input type="radio" id="envio3" name="envio">
+      <input type="radio" id="envio3" name="envio" value="5" onchange=actualizarTotales() checked>
       <label for="envio3">
-        <div class="row text-center sinSeleccionar" value="0,5">
+        <div class="row text-center sinSeleccionar" >
           <h5>Standar 12 a 15 dias (5%)
           </h5>
         </div>
@@ -118,13 +118,81 @@
         <label style="margin: 15px 5px 15px 15px;" for="numero"><strong>Numero:</strong></label>
         <input type="text" id="numero" required>
       </div>
+      <br>
+      <h2><i class="fas fa-wallet"></i> Pago</h2>
+      <p class="lead">Selecciona la forma de pago</p>
+      <input type="radio" id="credito" name="pago" value="credito" data-toggle="modal" data-target="#contidionsModal">
+      <label for="credito">
+        <div class="row text-center sinSeleccionar">
+          <h6>Credito</h6>
+        </div>
+      </label>
+      <input type="radio" id="debito" name="pago" value="debito" data-toggle="modal" data-target="#contidionsModal">
+      <label for="debito">
+        <div class="row text-center sinSeleccionar">
+          <h6>Debito</h6>
+        </div>
+      </label>
+      <input type="radio" id="efectivo" name="pago" value="efectivo">
+      <label for="efectivo">
+        <div class="row text-center sinSeleccionar">
+          <h6>Efectivo</h6>
+        </div>
+      </label>
+      <hr>
+      <p class="lead">Verifica el pago</p>
+      <hr>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Precio</h6>
+            <small class="text-muted">Total de tus productos</small>
+          </div>
+          <span class="text-muted" id="productCostText">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Porcentaje</h6>
+            <small class="text-muted">Según el tipo de envio</small>
+          </div>
+          <span class="text-muted" id="comissionText">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <h3>Total (US$)</h3>
+          <h3 id="totalCostText"><strong ></strong></h3>
+        </li>
+      </ul>
     </div>
     </div>
-   
-  
-  
-    
-    
+    <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ingrese los datos de su tarjeta</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container text-center">
+              <label for="ntarj" style="color: black;">Numero de Tarjeta:</label>
+              <input type="number" size="20" id="ntarj" placeholder="XXXX-XXXX-XXXX-XXXX"><br>
+              <label for="cvv" style="color: black;">CVV:</label>
+              <input type="number" size="3" id="cvv" placeholder="XXX"><br>
+              <label for="venci" style="color: black;">Fecha de vencimiento:</label>
+              <input type="month" step="1" min="9-2020"id="venci" size="7" placeholder="MM-YYYY"><br>
+              <label for="nombre" style="color: black;">Nombre del Titular:</label>
+              <input type="text" size="20" id="nombre" placeholder="Ingrese su nombre">
+              <label for="ci" style="color: black;">Cedula de Identidad:</label>
+              <input type="number" size="10" id="ci" placeholder="XXXXXXX-X"><br>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button style="background-color:#c80e60;"type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -136,7 +204,10 @@
   <script type="text/javascript">
     function actualizarNombre(){
       var actualizo = localStorage.getItem("usuario");
+      var cantidadCarrito = localStorage.getItem("productosEnCarro");
       document.getElementById("username").innerHTML = " "+ actualizo;
+      document.getElementsByClassName("badge")[0].innerHTML = cantidadCarrito;
+      
     }
     actualizarNombre();
   </script>

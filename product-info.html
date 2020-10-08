@@ -26,9 +26,9 @@
         <strong><span id="username" > nombre</span></strong></i>
         <div id="salir">
         <ul>
-        <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Mi perfil</a></li>
+        <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Perfil</a></li>
         <hr>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Mi carrito</a>
+        <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Carrito <span class="badge" style="background-color:#424347;"></span></a>
         <hr>
         <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
         </ul>
@@ -137,7 +137,10 @@
   <script type="text/javascript">
     function actualizarNombre(){
       var actualizo = localStorage.getItem("usuario");
+      var cantidadCarrito = localStorage.getItem("productosEnCarro");
       document.getElementById("username").innerHTML = " "+ actualizo;
+      document.getElementsByClassName("badge")[0].innerHTML = cantidadCarrito;
+      
     }
     actualizarNombre();
   </script>

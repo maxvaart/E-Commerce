@@ -175,5 +175,6 @@ document.addEventListener("DOMContentLoaded", function(e){
                 comments = resultObj.data;
                 showCommentsList(comments);
                 showRelacionated(productRelacionated);
+                almacenoCarrito();
         });
 });

@@ -182,7 +182,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONDataProduct("https://japdevdep.github.io/ecommerce-api/product/all.json").then(function(resultObj){
     arrayProductos = resultObj.data;
     arrayProductosConst = resultObj.data;
-    ordenarAlfa()
+    ordenarAlfa();
+    almacenoCarrito();
 })   
 });
 
