@@ -119,7 +119,7 @@ function enviarComentario(){
     showCommentsList(comments);
 }
     else{
-        alert("Faltan completar campos.")
+        swal("Error al comentar", "Corrobora que llenaste todos los campos obligatorios", "error")
     }
 
 }

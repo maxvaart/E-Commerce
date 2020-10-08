@@ -162,7 +162,10 @@
           <h3 id="totalCostText"><strong ></strong></h3>
         </li>
       </ul>
+      <br>
+      <button onclick=terminarCompra() style="background-color:#c80e60; width: 400px; height: 70px;" class="btn btn-primary" data-dismiss="modal">Finalizar Compra</button>
     </div>
+    
     </div>
     <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
       <div class="modal-dialog" role="document">
@@ -175,24 +178,27 @@
           </div>
           <div class="modal-body">
             <div class="container text-center">
+              <form>
               <label for="ntarj" style="color: black;">Numero de Tarjeta:</label>
-              <input type="number" size="20" id="ntarj" placeholder="XXXX-XXXX-XXXX-XXXX"><br>
-              <label for="cvv" style="color: black;">CVV:</label>
-              <input type="number" size="3" id="cvv" placeholder="XXX"><br>
+              <input type="number" size="20" id="ntarj" required placeholder="XXXX-XXXX-XXXX-XXXX"><br>
+              <label for="cvv" style="color: black;" >CVV:</label>
+              <input type="number" size="3" id="cvv" placeholder="XXX" required ><br>
               <label for="venci" style="color: black;">Fecha de vencimiento:</label>
-              <input type="month" step="1" min="9-2020"id="venci" size="7" placeholder="MM-YYYY"><br>
+              <input type="month" step="1" min="9-2020"id="venci" size="7" placeholder="MM-YYYY" required><br>
               <label for="nombre" style="color: black;">Nombre del Titular:</label>
-              <input type="text" size="20" id="nombre" placeholder="Ingrese su nombre">
+              <input type="text" size="20" id="nombre" placeholder="Ingrese su nombre" required>
               <label for="ci" style="color: black;">Cedula de Identidad:</label>
-              <input type="number" size="10" id="ci" placeholder="XXXXXXX-X"><br>
+              <input type="number" size="10" id="ci" placeholder="XXXXXXX-X" required><br>
+              <button style="background-color:#c80e60;" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </form>
             </div>
           </div>
-          <div class="modal-footer">
-            <button style="background-color:#c80e60;"type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-          </div>
         </div>
+        
       </div>
+      
     </div>
+    
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -217,6 +223,7 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/login.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://kit.fontawesome.com/62d1a3e9cc.js" crossorigin="anonymous"></script>
 </body>
 

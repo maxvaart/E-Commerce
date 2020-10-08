@@ -9,7 +9,17 @@ var precioTotal = document.getElementById("totalCostText");
 var totalProductos = document.getElementById("productCostText");
 var gastoPorcentaje = document.getElementById("comissionText");
 
-
+function terminarCompra(){
+    var direccion = document.getElementById("direccion").value;
+    var esquina = document.getElementById("esquina").value;
+    var numero = document.getElementById("numero").value;
+    if (direccion != "" && esquina !="" && numero !=""){
+        swal("Compra Realizada con exito", "Disfruta tus nuevos productos!", "success")
+    }
+    else {
+        swal("Error en compra", "Corrobora que llenaste todos los campos obligatorios", "error")
+    }
+}
 //FUNCION QUE VERIFICA EL PORCENTAJE SELECCIONADO
 function porcentaje(){
     for(i=1;i<4;i++){
@@ -44,7 +54,7 @@ function modificadorPositivo(valor){
 
 function modificadorNegativo(valor){
     var aux = valor-1;
-    if (arrayCantidades[aux].value !=0){
+    if (arrayCantidades[aux].value > 1){
         arrayCantidades[aux].value = parseInt(arrayCantidades[aux].value)-1;
     }
     actualizarPrecio (valor);
