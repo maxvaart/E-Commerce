@@ -9,17 +9,77 @@ var precioTotal = document.getElementById("totalCostText");
 var totalProductos = document.getElementById("productCostText");
 var gastoPorcentaje = document.getElementById("comissionText");
 
+
+//BOTONES MODIFICADORES DE CANTIDAD
+function modificadorPositivo(valor){
+    var aux = valor-1;
+    arrayCantidades[aux].value = parseInt(arrayCantidades[aux].value)+1;
+    actualizarPrecio(valor);
+}
+
+function modificadorNegativo(valor){
+    var aux = valor-1;
+    if (arrayCantidades[aux].value > 1){
+        arrayCantidades[aux].value = parseInt(arrayCantidades[aux].value)-1;
+    }
+    actualizarPrecio(valor);
+}
+//ACTUALIZA EL PRECIO TOTAL EN LA PANTALLA
+function actualizarPrecio (indiceArray){
+    
+    var aux = indiceArray - 1;
+    if (arrayCantidades.length!=0){
+    arraySubtotales[aux].innerHTML = calcular(aux); 
+} 
+    actualizarTotales()
+
+}
+//CALCULA LOS VALORES FINALES - TOTALES
+function actualizarTotales(){
+    if (arrayComprados.length !=0) {
+    totalProductos.innerHTML = calculoProductos();
+    gastoPorcentaje.innerHTML = (calculoProductos() * porcentajeSelec()) / 100;
+    precioTotal.innerHTML = parseFloat(totalProductos.innerHTML) + parseFloat(gastoPorcentaje.innerHTML);} 
+    else{
+        totalProductos.innerHTML=0;
+        gastoPorcentaje.innerHTML=0;
+        precioTotal.innerHTML=0;
+    }
+}
+//DA EL TOTAL GASTADO
+function calculoProductos(){
+    var gastoProductos = 0;
+    for(i=0;i<arraySubtotales.length;i++){
+        gastoProductos += parseFloat(arraySubtotales[i].innerHTML);
+    }
+    return gastoProductos
+}
+//CALCULA EL PRECIO SEGUN LA CANTIDAD DE ELEMENTOS COMPRADOS
+function calcular(indiceArray){
+    if (arrayCantidades.length!=0){
+    return arrayCantidades[indiceArray].value * arrayValoresUnitarios[indiceArray]
+}
+}
+//VERIFICA LOS CAMPOS Y GENERA EL ALERT
 function terminarCompra(){
     var direccion = document.getElementById("direccion").value;
     var esquina = document.getElementById("esquina").value;
     var numero = document.getElementById("numero").value;
-    if (direccion != "" && esquina !="" && numero !=""){
+    if (arrayComprados.length != 0){
+    if (direccion != "" && esquina !="" && numero !="") {
+        if(document.getElementsByTagName("form")[0].checkValidity() ||  document.getElementsByTagName("form")[1].checkValidity()){
         swal("Compra Realizada con exito", "Disfruta tus nuevos productos!", "success")
+        setTimeout( function() { window.location = "cover.html" }, 3300 );
+    } else{
+        swal("Error en forma de pago", "No completaste un metodo de pago", "error")
+    }
     }
     else {
-        swal("Error en compra", "Corrobora que llenaste todos los campos obligatorios", "error")
+        swal("Error en direccion de entrega", "No completaste la direccion de entrega", "error")
     }
-}
+} else {
+    swal("El carrito esta vacio", "No tienes nada para comprar", "error")
+}}
 //FUNCION QUE VERIFICA EL PORCENTAJE SELECCIONADO
 function porcentaje(){
     for(i=1;i<4;i++){
@@ -36,29 +96,9 @@ function porcentajeSelec(){
     }
     return parseFloat(porcentajeSeleccionado)
 }
-//DA EL TOTAL GASTADO
-function calculoProductos(){
-    var gastoProductos = 0;
-    for(i=0;i<arraySubtotales.length;i++){
-        gastoProductos += parseFloat(arraySubtotales[i].innerHTML);
-    }
-    return gastoProductos
-}
 
-//BOTONES MODIFICADORES DE CANTIDAD
-function modificadorPositivo(valor){
-    var aux = valor-1;
-    arrayCantidades[aux].value = parseInt(arrayCantidades[aux].value)+1;
-    actualizarPrecio (valor);
-}
 
-function modificadorNegativo(valor){
-    var aux = valor-1;
-    if (arrayCantidades[aux].value > 1){
-        arrayCantidades[aux].value = parseInt(arrayCantidades[aux].value)-1;
-    }
-    actualizarPrecio (valor);
-}
+
 //CAMBIA LA MONEDA PESOS A DOLARES
 function cambiarMoneda(moneda,cantidad){
     var resultado = cantidad;
@@ -67,22 +107,7 @@ function cambiarMoneda(moneda,cantidad){
     }
     return resultado;
 }
-//CALCULA EL PRECIO SEGUN LA CANTIDAD DE ELEMENTOS COMPRADOS
-function calcular(indiceArray){
-    return arrayCantidades[indiceArray].value * arrayValoresUnitarios[indiceArray]
-}
-//ACTUALIZA EL PRECIO TOTAL EN LA PANTALLA
-function actualizarPrecio (indiceArray){
-    var aux = indiceArray - 1;
-    arraySubtotales[aux].innerHTML = calcular(aux); 
-    actualizarTotales()
-}
-//CALCULA LOS VALORES FINALES - TOTALES
-function actualizarTotales(){
-    totalProductos.innerHTML = calculoProductos();
-    gastoPorcentaje.innerHTML = (calculoProductos() * porcentajeSelec()) / 100;
-    precioTotal.innerHTML = parseFloat(totalProductos.innerHTML) + parseFloat(gastoPorcentaje.innerHTML);
-}
+
 //ALMACENA Y ACTUALIZA EL ARRAY CON LOS VALORES NUEVOS
 function actualizarArray(array){
     for(let i = 1; i <= array.length; i++){
@@ -94,20 +119,43 @@ function actualizarArray(array){
 }
 //ALMACENO EN LOCAL STORAGE LA CANTIDAD DE PRODUCTOS EN EL CARRITO
 function almacenoCarrito(){
-    if(arrayComprados.length!= null){
+    if(arrayComprados.length!= 0){
         localStorage.setItem("productosEnCarro" , arrayComprados.length)
     }
 }
+//FUNCION QUE ELIMINA UN ELEMENTO DEL CARRITO
+function eliminarElemento(indice){
+    var aux = indice-1
+    arrayComprados.splice(aux,1);
+    showObjetcsList(arrayComprados);
+    actualizarPrecio (indice);
+}
 //PRESENTO EN HTML LOS PRODUCTOS COMPRADOS
 function showObjetcsList(array){
-    
+    arrayValoresUnitarios = [];
+    arrayCantidades =[];
+    arraySubtotales =[];
     let htmlContentToAppend = "";
+    if (array.length==0){
+        htmlContentToAppend += `
+        <div class="row">
+        <div class="col-12">
+        <br>
+        <p class="lead"><em>Tu carrito no tiene productos</em></p>
+        <hr>
+        </div>
+        </div>
+        `
+        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+    } else{
+    
+   
     for(let i = 1; i <= array.length; i++){
         let objeto = array[i-1];
 
         htmlContentToAppend += `
         <div class="list-group-item list-group-item-action">
-            <div class="row" style="display:flex; align-items:center">
+            <div class="row" style="align-items:center">
                 <div class="col-2">
                     <img src="` + objeto.src + `" class="img-thumbnail">
                 </div>
@@ -125,16 +173,24 @@ function showObjetcsList(array){
                 <div class="col-2">
                 <p style="font-size:20px;"><strong>USD <span id="subtotal`+i+`">` + cambiarMoneda(objeto.currency, objeto.unitCost)+ `</span></strong></p>
                 </div>
+                <div class="col-1">
+                <button class="btn" style="background-color: #c80e60" onclick="eliminarElemento(`+i+`)"><i style="color:white"class="fas fa-trash-alt"></i></button>
+                </div>
             </div>
         </div>
         `
 
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        
     }
     actualizarArray(array);
-    for (i=1;i<=array.length;i++){
+        for (i=1;i<=array.length;i++){
         actualizarPrecio(i);
     }
+    
+}
+    
+
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de

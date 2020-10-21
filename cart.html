@@ -121,22 +121,22 @@
       <br>
       <h2><i class="fas fa-wallet"></i> Pago</h2>
       <p class="lead">Selecciona la forma de pago</p>
-      <input type="radio" id="credito" name="pago" value="credito" data-toggle="modal" data-target="#contidionsModal">
+      <input type="radio" id="credito" name="pago" value="credito" data-toggle="modal" data-target="#tarjeta">
       <label for="credito">
         <div class="row text-center sinSeleccionar">
           <h6>Credito</h6>
         </div>
       </label>
-      <input type="radio" id="debito" name="pago" value="debito" data-toggle="modal" data-target="#contidionsModal">
+      <input type="radio" id="debito" name="pago" value="debito" data-toggle="modal" data-target="#tarjeta">
       <label for="debito">
         <div class="row text-center sinSeleccionar">
           <h6>Debito</h6>
         </div>
       </label>
-      <input type="radio" id="efectivo" name="pago" value="efectivo">
+      <input type="radio" id="efectivo" name="pago" value="efectivo" data-toggle="modal" data-target="#transferencia">
       <label for="efectivo">
         <div class="row text-center sinSeleccionar">
-          <h6>Efectivo</h6>
+          <h6>Transferencia Bancaria</h6>
         </div>
       </label>
       <hr>
@@ -165,9 +165,9 @@
       <br>
       <button onclick=terminarCompra() style="background-color:#c80e60; width: 400px; height: 70px;" class="btn btn-primary" data-dismiss="modal">Finalizar Compra</button>
     </div>
-    
     </div>
-    <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="tarjeta">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -179,24 +179,48 @@
           <div class="modal-body">
             <div class="container text-center">
               <form>
-              <label for="ntarj" style="color: black;">Numero de Tarjeta:</label>
-              <input type="number" size="20" id="ntarj" required placeholder="XXXX-XXXX-XXXX-XXXX"><br>
+              <label for="ntarj" style="color: black;">N° de Tarjeta:</label>
+              <input type="number" size="18"  style="margin: 8px;" id="ntarj" required placeholder="XXXX-XXXX-XXXX-XXXX">
               <label for="cvv" style="color: black;" >CVV:</label>
-              <input type="number" size="3" id="cvv" placeholder="XXX" required ><br>
+              <input type="number" size="3" style="margin: 8px;" id="cvv" placeholder="XXX" required ><br>
               <label for="venci" style="color: black;">Fecha de vencimiento:</label>
-              <input type="month" step="1" min="9-2020"id="venci" size="7" placeholder="MM-YYYY" required><br>
+              <input type="month" step="1" min="9-2020" style="margin: 8px;" id="venci" size="7" placeholder="MM-YYYY" required><br>
               <label for="nombre" style="color: black;">Nombre del Titular:</label>
-              <input type="text" size="20" id="nombre" placeholder="Ingrese su nombre" required>
+              <input type="text" size="20" id="nombre" style="margin: 8px;" placeholder="Ingrese su nombre" required>
               <label for="ci" style="color: black;">Cedula de Identidad:</label>
-              <input type="number" size="10" id="ci" placeholder="XXXXXXX-X" required><br>
-              <button style="background-color:#c80e60;" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+              <input type="number" size="10" id="ci" style="margin: 8px;" placeholder="XXXXXXX-X" required><br>
+              <button style="background-color:#c80e60;" class="btn btn-primary" data-dismiss="modal">Guardar</button>
             </form>
             </div>
           </div>
         </div>
-        
       </div>
-      
+    </div>
+
+    <div class="modal fade" tabindex="-1" id="transferencia">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ingrese los datos de cuenta bancaria</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container text-center">
+              <form>
+              <label for="ntarj" style="color: black;">Numero de cuenta:</label>
+              <input type="number" size="20" id="ntarj" style="margin: 12px;" required placeholder="XXX-XXXXXXXXXXXX"><br>
+              <label for="nombre" style="color: black;">Nombre del Titular:</label>
+              <input type="text" size="20" id="nombre" style="margin: 12px;" placeholder="Ingrese su nombre" required>
+              <label for="ci" style="color: black;">Referencia:</label>
+              <input type="text" size="33" style="margin: 12px;" placeholder="Ingrese el referido de la transaccion" required><br>
+              <button style="background-color:#c80e60;" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     
   <div id="spinner-wrapper">
@@ -208,6 +232,7 @@
     </div>
   </div>
   <script type="text/javascript">
+
     function actualizarNombre(){
       var actualizo = localStorage.getItem("usuario");
       var cantidadCarrito = localStorage.getItem("productosEnCarro");
