@@ -23,14 +23,14 @@
         <div class="py-2 d-none d-md-inline-block site-header "  id="activo" style="color:white">
           <strong><span id="username" > nombre</span></strong></i>
           <div id="salir">
-          <ul>
-          <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Perfil</a></li>
-          <hr>
-          <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Carrito <span class="badge" style="background-color:#424347;"></span></a>
-          <hr>
-          <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
-          </ul>
-        </div>
+            <ul>
+              <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Perfil</a></li>
+              <hr>
+              <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Carrito <span class="badge" style="background-color:#424347;"></span></a>
+              <hr>
+              <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       </nav>
@@ -40,7 +40,40 @@
           <p class="lead">Ve aquí todos nuestros productos.</p>
       </div>
       <div class="container">
+        
+        <div class="row justify-content-start mb-2">
+          <div class="col py-2 d-none d-md-inline-block">  
+            <i class="fas fa-search" style="float: right;"></i>
+          </div>
+          <div class="col-md-5">  
+            <input class="form-control" type="text" placeholder="Buscar" id="buscador" style="border: #c80e60 solid 0.5px;">
+          </div>
+          <div class="col-md-6 col-sm-12 mb-1 container">
+            <div class="row container p-0 m-0">
+              <div class="col">
+                <p class="font-weight-normal text-right my-2">Precio</p>
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="border: #c80e60 solid 0.5px;">
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="border: #c80e60 solid 0.5px;">
+              </div>
+              <div class="col-3 p-0">
+                <div class="btn-group" role="group">
+                  <button class="btn" style="border: #c80e60 solid 0.5px;" id="rangeFilterCount" onclick=filtrar()>Filtrar</button>
+                  <button class="btn" style="border: #c80e60 solid 0.5px; color: #c80e60;" id="clearRangeFilter" onclick=limpiar()>Limpiar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row">
+          <div class="col text-left">
+            <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+              <button class="btn active" type="button" name="options"  style="background-color:#c80e60; border: #c80e60 solid 0.5px; width: 250px; color: white;"  onclick=disposicion()>Cambiar a disposicion: <i id="imgBoton" class="fas fa-th-large"></i></button>
+            </div>
+          </div>
           <div class="col text-right">
               <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
                 <button class="btn" type="button" name="options"  onclick=ordenarZeta() style="border: #c80e60 solid 0.5px;" id="botonA" ><i class="fas fa-dollar-sign"></i><i class="fas fa-long-arrow-alt-up"></i></button>
@@ -49,39 +82,12 @@
               </div>
           </div>
         </div>
-        <div class="row justify-content-start">
-        <div class="col py-2 d-none d-md-inline-block">  
-          <i class="fas fa-search" style="float: right;"></i>
-        </div>
-        <div class="col-md-5">  
-          <input class="form-control" type="text" placeholder="Buscar" id="buscador" style="border: #c80e60 solid 0.5px;">
-        </div>
-        <div class="col-md-6 col-sm-12 mb-1 container">
-          <div class="row container p-0 m-0">
-            <div class="col">
-              <p class="font-weight-normal text-right my-2">Precio</p>
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" style="border: #c80e60 solid 0.5px;">
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" style="border: #c80e60 solid 0.5px;">
-            </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn" style="border: #c80e60 solid 0.5px;" id="rangeFilterCount" onclick=filtrar()>Filtrar</button>
-                <button class="btn" style="border: #c80e60 solid 0.5px; color: #c80e60;" id="clearRangeFilter" onclick=limpiar()>Limpiar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-          <div class="row" style="margin-top: 10px;">
-              <div class="list-group" id="cat-list-container">
-              </div>
+          <div class="row">
+                <div class="row" id="conjuntoTarjetas" >
+                </div>
           </div>
       </div>
-  </main>
+    </main>
     <!--<div class="container p-5">
       <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
         <h4 class="alert-heading">¡A trabajar! :)</h4>

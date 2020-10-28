@@ -254,3 +254,8 @@ input[type=number] {
 .cant{
   width: 5ch;
 }
+
+.tarjeta-producto:hover{
+  background-color:  #f7f7f7;
+  transform: scale(1.05 , 1.05);
+}

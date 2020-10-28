@@ -14,7 +14,7 @@ function filtrar(){
     };
     if (productosFiltrados.length == 0)
     {
-        document.getElementById("cat-list-container").innerHTML = `
+        document.getElementById("conjuntoTarjetas").innerHTML = `
             <div class="row">
                 <div class="col-12 text-muted">
                 <br>
@@ -36,6 +36,68 @@ function limpiar(){
     arrayProductos = arrayProductosConst;
     
 };
+
+//CAMBIAR DISPOSICION DE PANELES
+function disposicion() {
+    var imgBoton = document.getElementById("imgBoton");
+    var arrayTotalCartas = document.getElementsByClassName("total-carta");
+    var arrayDescripcionCartas = document.getElementsByClassName("descripcion-carta");
+    var arrayImgsCartas = document.getElementsByClassName("img-carta");
+    var arrayPrecioCartas = document.getElementsByClassName("precio-carta");
+    var arrayDisponibleCartas = document.getElementsByClassName("disponible-carta");
+    if ((imgBoton.className) == "fas fa-th-large") {
+        imgBoton.classList.remove("fa-th-large");
+        imgBoton.classList.add("fa-bars");
+        for(i=0;i<arrayProductos.length;i++){
+            //TAMAÑO CARTA
+            arrayTotalCartas[i].classList.remove("col-6");
+            arrayTotalCartas[i].classList.remove("col-md-12");
+            arrayTotalCartas[i].classList.add("col-12");
+            arrayTotalCartas[i].classList.add("col-md-6");
+            //TAMAÑO IMAGEN
+            arrayImgsCartas[i].classList.remove("col-md-4");
+            //TAMAÑO TEXTO DESCRIPTIVO
+            arrayDescripcionCartas[i].classList.remove("d-md-block");
+            arrayDescripcionCartas[i].classList.remove("d-none");
+            arrayDescripcionCartas[i].classList.remove("offset-md-1");
+            arrayDescripcionCartas[i].classList.remove("col-md-5");
+            arrayDescripcionCartas[i].classList.add("col-12");
+            //TAMAÑO TEXTO PRECIO
+            arrayPrecioCartas[i].classList.remove("offset-md-6");
+            arrayPrecioCartas[i].classList.remove("col-md-3");
+            //TAMAÑO DISPONIBLES
+            arrayDisponibleCartas[i].classList.remove("col-md-3");            
+            
+            
+            
+
+        }
+    } else {
+        for(i=0;i<arrayProductos.length;i++){
+        imgBoton.classList.remove("fa-bars");
+        imgBoton.classList.add("fa-th-large")
+        //TAMAÑO CARTA
+        arrayTotalCartas[i].classList.add("col-6");
+        arrayTotalCartas[i].classList.add("col-md-12");
+        arrayTotalCartas[i].classList.remove("col-12");
+        arrayTotalCartas[i].classList.remove("col-md-6");
+        //TAMAÑO IMAGEN
+        arrayImgsCartas[i].classList.add("col-md-4");
+        //TAMAÑO TEXTO DESCRIPTIVO
+        arrayDescripcionCartas[i].classList.add("d-md-block");
+        arrayDescripcionCartas[i].classList.add("d-none");
+        arrayDescripcionCartas[i].classList.add("offset-md-1");
+        arrayDescripcionCartas[i].classList.add("col-md-5");
+        arrayDescripcionCartas[i].classList.remove("col-12");
+        //TAMAÑO TEXTO PRECIO
+        arrayPrecioCartas[i].classList.add("offset-md-6");
+        arrayPrecioCartas[i].classList.add("col-md-3");
+        //TAMAÑO DISPONIBLES
+        arrayDisponibleCartas[i].classList.add("col-md-3"); 
+    }
+    }
+    
+}
 
 
 //CAMBIA IMAGEN DEL BOTON AL CAMBIAR ORDEN DE PRODUCTOS
@@ -114,6 +176,7 @@ function corroborarActivos(){
         claseBotonA.classList.remove("active");
         claseBotonZ.classList.remove("active");
     } else{console.log("no hay cuestion")};
+
 };
 
 //BUSCA LOS ELEMENTOS QUE CONTENGAN LAS LETRAS ESCRITAS EN EL BUSCADOR
@@ -125,7 +188,7 @@ function buscar(){
         }
     }
     if (arrayFiltrado.length == 0){
-        document.getElementById("cat-list-container").innerHTML = `
+        document.getElementById("conjuntoTarjetas").innerHTML = `
             <div class="row">
                 <div class="col-12 text-muted">
                 <br>
@@ -147,33 +210,32 @@ function showCategoriesList(array){
         let category = array[i];
 
         htmlContentToAppend += `
-        <a class="list-group-item list-group-item-action" href="product-info.html" >
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
+        <div class="total-carta col-6 col-md-12 ">
+            <a class="card  shadow tarjeta-producto"  style="color:black;padding: 15px; margin:10px;" href="product-info.html" >
+                <div class="card-header text-center" style="background-color:#c80e60; color:white">
+                    <h3>`+ category.name +`</h3>
                 </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ category.name +`</h4>
-                        <p class="text-muted">` + category.soldCount + ` artículos</p>
+                <div class="row mt-3 mb-3 align-items-center">
+                    <div class=" img-carta col-12 col-md-4">
+                        <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
                     </div>
-                    <div class="row">
-                    <div class="col>
-                    <p class="text-muted">` + category.description + ` artículos</p>
-                    </div>
+                    <div class="descripcion-carta d-none d-md-block offset-md-1 col-md-5">
+                        <p class="align-self-center" style="font-size:20px;">` + category.description + `</p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                    <div class="offset-9 col-3">
-                    <p style="font-size:25px;"><strong>$USD ` + category.cost + ` </strong></p>
+                <div class="row align-items-center">
+                    <div class="disponible-carta col-12 col-md-3">
+                        <p class="text-muted" style="font-size:18px;"><span class="d-none d-sm-block"> Disponibilidad: </span>` + category.soldCount + ` artículos</p>
                     </div>
+                    <div class="precio-carta col-12 offset-md-6 col-md-3">
+                        <p style="font-size:24px;"><span class="d-none d-sm-block">Precio Actual:<br></span><span style="font-size:28px;"><strong>$USD ` + category.cost + ` </strong></span></p>
                     </div>
-            </div>
-        </a>
+                </div>
+            </a>
+        </div>   
         `
 
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+        document.getElementById("conjuntoTarjetas").innerHTML = htmlContentToAppend;
         
     }
 }
