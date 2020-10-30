@@ -14,26 +14,31 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
+    <nav class="site-header sticky-top py-1 bg-dark navbar navbar-dark navbar-expand-sm fixed-top">
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="cover.html"><i class="fas fa-home"></i> Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html"><i class="fas fa-th-list"></i> Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html"><i class="fas fa-cubes"></i> Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html"><i class="fas fa-hand-holding-usd"></i> Vender</a>
-        <div class="py-2 d-none d-md-inline-block site-header "  id="activo" style="color:white">
+        <button class="navbar-toggler w-100" type="button" data-toggle="collapse" data-target="#Navbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="Navbar">
+          <li class="nav-item"><a class="py-2 d-sm-inline itemMenu" href="cover.html"><i class="fas fa-home"></i> Inicio</a></li>
+          <li class="nav-item"><a class="py-2 d-sm-inline itemMenu" href="categories.html"><i class="fas fa-th-list"></i> Categorías</a></li>
+          <li class="nav-item"><a class="py-2 d-sm-inline itemMenu" href="products.html"><i class="fas fa-cubes"></i> Productos</a></li>
+          <li class="nav-item"><a class="py-2 d-sm-inline itemMenu" href="sell.html"><i class="fas fa-hand-holding-usd"></i> Vender</a>
+        </div>
+        <div class="mt-2 py-2 d-sm-inline-block site-header "  id="activo" style="color:white">
           <strong><span id="username" > nombre</span></strong></i>
           <div id="salir">
-          <ul>
-          <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Perfil</a></li>
-          <hr>
-          <a class="py-2 d-none d-md-inline-block" href="cart.html"><i class="fas fa-shopping-cart"></i>Carrito <span class="badge" style="background-color:#424347;"></span></a>
-          <hr>
-          <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
-          </ul>
-        </div>
+            <ul>
+              <li><a href="my-profile.html" style="color:white;"><i class="fas fa-user-alt" style="color:white"></i> Perfil</a></li>
+              <hr>
+              <a class="py-2" href="cart.html"><i class="fas fa-shopping-cart"></i>Carrito <span class="badge" style="background-color:#424347;"></span></a>
+              <hr>
+              <li><a href="#" onclick=logout() style="color:white;"><i class="fas fa-door-open" style="color:white"></i> Salir</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-      </nav>
+    </nav>
     <main role="main">
       <section class="jumbotron text-center">
         <div class="m-5">

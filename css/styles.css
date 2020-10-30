@@ -145,7 +145,6 @@ a.custom-card:hover {
   color: orange;
 }
 #activo{
-
   width: max-content;
   color: white;
   background-color:#c80e60;
@@ -258,4 +257,7 @@ input[type=number] {
 .tarjeta-producto:hover{
   background-color:  #f7f7f7;
   transform: scale(1.05 , 1.05);
+}
+.itemMenu{
+  margin-right: 70px;
 }

@@ -66,11 +66,7 @@ function disposicion() {
             arrayPrecioCartas[i].classList.remove("offset-md-6");
             arrayPrecioCartas[i].classList.remove("col-md-3");
             //TAMAÑO DISPONIBLES
-            arrayDisponibleCartas[i].classList.remove("col-md-3");            
-            
-            
-            
-
+            arrayDisponibleCartas[i].classList.remove("col-md-3");                   
         }
     } else {
         for(i=0;i<arrayProductos.length;i++){
@@ -96,7 +92,6 @@ function disposicion() {
         arrayDisponibleCartas[i].classList.add("col-md-3"); 
     }
     }
-    
 }
 
 
