@@ -203,8 +203,8 @@ input[type = "radio"]{
 label{
   color: white;
 }
-label:hover ,
-label:hover ~ label {
+.puntuacion>label:hover ,
+.puntuacion>label:hover ~ label {
   color: #c80e60;
 }
 input[type = "radio"]:checked ~ label {
